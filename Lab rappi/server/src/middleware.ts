@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
-const SECRET_KEY = process.env.JWT_SECRET || 'secret';
+const SECRET_KEY = process.env.JWT_SECRET || 'supersecret123';
 
 export const authMiddleware = (roles: string[] = []) => {
   return (req: Request, res: Response, next: NextFunction) => {
