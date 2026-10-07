@@ -111,9 +111,9 @@ export default function DeliveryDashboard() {
       const data = await res.json();
       if (res.ok) {
         if (status === 'waiting_for_deliver') {
-          setActionSuccess('Orden soltada. Ha regresado a estado waiting_for_deliver para otros domiciliarios.');
+          setActionSuccess('Orden liberada para otros repartidores.');
         } else {
-          setActionSuccess('¡Orden entregada con éxito! Registrada en tu historial.');
+          setActionSuccess('Orden entregada con éxito.');
         }
         fetchOrders();
       } else {
@@ -130,19 +130,19 @@ export default function DeliveryDashboard() {
       case 'waiting_for_deliver':
         return (
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
-            ⏳ Disponible (waiting_for_deliver)
+            Disponible
           </span>
         );
       case 'in_progress':
         return (
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
-            🛵 En Progreso (in_progress)
+            En camino
           </span>
         );
       case 'delivered':
         return (
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-800">
-            ✅ Entregada (delivered)
+            Entregada
           </span>
         );
       default:
@@ -172,7 +172,7 @@ export default function DeliveryDashboard() {
               disabled={fetching}
               className="px-4 py-2.5 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg text-sm font-medium transition"
             >
-              🔄 Actualizar Órdenes
+              Actualizar órdenes
             </button>
             <button
               onClick={logout}
@@ -183,11 +183,11 @@ export default function DeliveryDashboard() {
           </div>
         </div>
 
-        {/* Notificaciones y Errores Requeridos */}
+        {/* Notificaciones y Errores */}
         {actionError && (
           <div className="p-4 rounded-lg bg-red-50 border-l-4 border-red-500 text-red-800 text-sm flex items-center justify-between">
             <div>
-              <span className="font-bold">❌ Error en la orden:</span> {actionError}
+              <span className="font-bold">Error:</span> {actionError}
             </div>
             <button onClick={() => setActionError(null)} className="text-red-500 font-bold ml-4">
               &times;
@@ -198,7 +198,7 @@ export default function DeliveryDashboard() {
         {actionSuccess && (
           <div className="p-4 rounded-lg bg-green-50 border-l-4 border-green-500 text-green-800 text-sm flex items-center justify-between">
             <div>
-              <span className="font-bold">✔️ Éxito:</span> {actionSuccess}
+              <span className="font-bold">Éxito:</span> {actionSuccess}
             </div>
             <button onClick={() => setActionSuccess(null)} className="text-green-500 font-bold ml-4">
               &times;
@@ -257,7 +257,7 @@ export default function DeliveryDashboard() {
                   onClick={() => acceptOrder(selectedOrderDetail.id)}
                   className="flex-1 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-sm transition"
                 >
-                  Aceptar y Tomar Orden
+                  Aceptar orden
                 </button>
                 <button
                   onClick={() => setSelectedOrderDetail(null)}
@@ -275,13 +275,13 @@ export default function DeliveryDashboard() {
           {/* 1. Órdenes Disponibles para Entrega */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
             <h2 className="text-xl font-bold text-gray-900 mb-2 flex items-center justify-between">
-              <span>📍 Órdenes Disponibles para Entrega</span>
+              <span>Órdenes disponibles para entrega</span>
               <span className="text-xs font-normal bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
                 {availableOrders.length}
               </span>
             </h2>
             <p className="text-xs text-gray-500 mb-4">
-              Órdenes con estado <em>waiting_for_deliver</em> que no han sido tomadas por ningún domiciliario.
+              Órdenes listas para entrega que aún no han sido asignadas a ningún repartidor.
             </p>
 
             <div className="flex-1 overflow-y-auto space-y-4">
@@ -326,13 +326,13 @@ export default function DeliveryDashboard() {
                         onClick={() => setSelectedOrderDetail(order)}
                         className="flex-1 py-1.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg text-xs font-medium transition"
                       >
-                        👁️ Ver Detalle
+                        Ver detalle
                       </button>
                       <button
                         onClick={() => acceptOrder(order.id)}
                         className="flex-1 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-bold transition shadow-sm"
                       >
-                        Aceptar Orden
+                        Aceptar orden
                       </button>
                     </div>
                   </div>
@@ -350,13 +350,13 @@ export default function DeliveryDashboard() {
           {/* 2. Historial y Órdenes Aceptadas */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
             <h2 className="text-xl font-bold text-gray-900 mb-2 flex items-center justify-between">
-              <span>🛵 Mis Órdenes (Historial y Estado)</span>
+              <span>Mis órdenes asignadas</span>
               <span className="text-xs font-normal bg-gray-100 text-gray-800 px-2 py-0.5 rounded-full">
                 {myOrders.length}
               </span>
             </h2>
             <p className="text-xs text-gray-500 mb-4">
-              Órdenes asignadas a ti. Puedes soltar la orden o confirmarla como entregada.
+              Órdenes asignadas a tu cuenta. Puedes soltar la orden o confirmarla como entregada.
             </p>
 
             <div className="flex-1 overflow-y-auto space-y-4">
@@ -400,14 +400,14 @@ export default function DeliveryDashboard() {
                           onClick={() => updateStatus(order.id, 'waiting_for_deliver')}
                           className="flex-1 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-bold transition shadow-sm"
                         >
-                          ↩️ Soltar / Rechazar
+                          Soltar orden
                         </button>
                         {/* Entregar orden: pasa a delivered */}
                         <button
                           onClick={() => updateStatus(order.id, 'delivered')}
                           className="flex-1 py-1.5 bg-green-600 hover:bg-green-700 text-white rounded-lg text-xs font-bold transition shadow-sm"
                         >
-                          ✅ Marcar Entregada
+                          Marcar como entregada
                         </button>
                       </div>
                     )}

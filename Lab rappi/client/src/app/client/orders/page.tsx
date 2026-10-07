@@ -51,19 +51,19 @@ export default function MyOrders() {
       case 'waiting_for_deliver':
         return (
           <span className="px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
-            ⏳ Esperando Domiciliario (waiting_for_deliver)
+            Esperando repartidor
           </span>
         );
       case 'in_progress':
         return (
           <span className="px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
-            🛵 En Camino (in_progress)
+            En camino
           </span>
         );
       case 'delivered':
         return (
           <span className="px-3 py-1 rounded-full text-xs font-bold bg-green-100 text-green-800">
-            ✅ Entregada (delivered)
+            Entregada
           </span>
         );
       default:
@@ -103,7 +103,7 @@ export default function MyOrders() {
             }}
             className="text-xs bg-white border border-gray-300 px-3 py-1.5 rounded-md hover:bg-gray-50 text-gray-700 shadow-sm"
           >
-            🔄 Actualizar Estado
+            Actualizar lista
           </button>
         </div>
 
@@ -116,8 +116,7 @@ export default function MyOrders() {
           <div className="text-center py-12 text-gray-500">Cargando tus órdenes...</div>
         ) : orders.length === 0 ? (
           <div className="bg-white rounded-xl p-12 text-center border border-gray-200 shadow-sm">
-            <span className="text-4xl">📦</span>
-            <h3 className="mt-4 text-lg font-medium text-gray-900">Aún no has realizado ninguna orden</h3>
+            <h3 className="mt-2 text-lg font-medium text-gray-900">Aún no has realizado ninguna orden</h3>
             <p className="mt-1 text-sm text-gray-500 mb-6">
               Explora las tiendas disponibles y realiza tu primer pedido.
             </p>

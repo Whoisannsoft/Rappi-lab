@@ -187,19 +187,19 @@ export default function StoreAdmin() {
       case 'waiting_for_deliver':
         return (
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800">
-            ⏳ Esperando Domiciliario
+            Esperando repartidor
           </span>
         );
       case 'in_progress':
         return (
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
-            🛵 En Reparto
+            En reparto
           </span>
         );
       case 'delivered':
         return (
           <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-green-100 text-green-800">
-            ✅ Entregada
+            Entregada
           </span>
         );
       default:
@@ -228,7 +228,7 @@ export default function StoreAdmin() {
                   store.is_open ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
                 }`}
               >
-                {store.is_open ? '● ABIERTA AL PÚBLICO' : '● CERRADA'}
+                {store.is_open ? 'Abierta' : 'Cerrada'}
               </span>
             </div>
             <p className="text-sm text-gray-500 mt-1">
@@ -249,8 +249,8 @@ export default function StoreAdmin() {
               {isToggling
                 ? 'Actualizando...'
                 : store.is_open
-                ? '🔴 Cerrar Tienda (is_open: false)'
-                : '🟢 Abrir Tienda (is_open: true)'}
+                ? 'Cerrar tienda'
+                : 'Abrir tienda'}
             </button>
             <button
               onClick={logout}
@@ -272,7 +272,7 @@ export default function StoreAdmin() {
           {/* Columna 1: Productos de la Tienda */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
             <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center justify-between">
-              <span>🍔 Productos de la Tienda</span>
+              <span>Productos de la tienda</span>
               <span className="text-xs font-normal text-gray-500">{products.length} producto(s)</span>
             </h2>
 
@@ -304,7 +304,7 @@ export default function StoreAdmin() {
                 disabled={isSubmitting}
                 className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md text-sm transition disabled:opacity-50"
               >
-                {isSubmitting ? 'Guardando...' : '+ Crear Producto'}
+                {isSubmitting ? 'Guardando...' : 'Crear producto'}
               </button>
             </form>
 
@@ -366,7 +366,7 @@ export default function StoreAdmin() {
                     onClick={() => startEditProduct(prod)}
                     className="text-xs font-medium text-blue-600 hover:text-blue-800 bg-blue-50 px-2.5 py-1.5 rounded transition"
                   >
-                    ✏️ Editar Nombre
+                    Editar
                   </button>
                 </div>
               ))}
@@ -381,7 +381,7 @@ export default function StoreAdmin() {
           {/* Columna 2: Órdenes de la Tienda */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 flex flex-col">
             <h2 className="text-xl font-bold text-gray-900 mb-4 flex items-center justify-between">
-              <span>📋 Órdenes de la Tienda</span>
+              <span>Órdenes de la tienda</span>
               <span className="text-xs font-normal text-gray-500">{orders.length} orden(es)</span>
             </h2>
 

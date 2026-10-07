@@ -160,11 +160,11 @@ export default function StoreDetails() {
             <div>
               {store.is_open ? (
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-800">
-                  ● Abierta para pedidos
+                  Abierta
                 </span>
               ) : (
                 <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-semibold bg-red-100 text-red-800">
-                  ● Tienda Cerrada
+                  Cerrada
                 </span>
               )}
             </div>
@@ -173,7 +173,7 @@ export default function StoreDetails() {
           {/* Bloqueo explícito requerido en el PDF si la tienda está cerrada */}
           {isStoreClosed && (
             <div className="mt-4 p-4 rounded-lg bg-red-50 border border-red-200 text-red-800 text-sm">
-              <span className="font-bold">⚠️ Atención:</span> Esta tienda se encuentra actualmente <strong>CERRADA</strong>.
+              <span className="font-bold">Atención:</span> Esta tienda se encuentra actualmente <strong>CERRADA</strong>.
               La opción de compra ha sido bloqueada según las políticas del sistema.
             </div>
           )}
@@ -256,10 +256,10 @@ export default function StoreDetails() {
             {submitting
               ? 'Procesando...'
               : isStoreClosed
-              ? 'Tienda Cerrada (Compra Bloqueada)'
+              ? 'Tienda cerrada'
               : totalItems === 0
-              ? 'Selecciona Productos'
-              : 'Confirmar y Crear Orden'}
+              ? 'Seleccionar productos'
+              : 'Confirmar orden'}
           </button>
         </div>
       </div>

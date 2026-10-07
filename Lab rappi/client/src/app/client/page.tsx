@@ -59,7 +59,7 @@ export default function ClientDashboard() {
               href="/client/orders"
               className="px-4 py-2 bg-blue-50 text-blue-700 hover:bg-blue-100 rounded-lg font-medium text-sm transition"
             >
-              🛍️ Mis Órdenes
+              Mis Órdenes
             </Link>
             <button
               onClick={logout}
@@ -84,8 +84,7 @@ export default function ClientDashboard() {
           <div className="text-center py-12 text-gray-500">Cargando tiendas abiertas...</div>
         ) : stores.length === 0 ? (
           <div className="bg-white rounded-xl p-12 text-center border border-gray-200 shadow-sm">
-            <span className="text-4xl">🏪</span>
-            <h3 className="mt-4 text-lg font-medium text-gray-900">No hay tiendas abiertas en este momento</h3>
+            <h3 className="text-lg font-medium text-gray-900">No hay tiendas abiertas en este momento</h3>
             <p className="mt-1 text-sm text-gray-500">
               Vuelve a revisar más tarde cuando los administradores abran sus tiendas.
             </p>
@@ -112,7 +111,7 @@ export default function ClientDashboard() {
                   href={`/client/stores/${store.id}`}
                   className="w-full text-center py-2.5 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg text-sm transition block"
                 >
-                  Ver Productos y Ordenar &rarr;
+                  Ver productos y ordenar
                 </Link>
               </div>
             ))}
